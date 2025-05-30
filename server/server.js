@@ -1,11 +1,14 @@
-require('dotenv').config();
+require('dotenv').config(); // Modified line
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const path = require('path');
-const connectDB = require('./config/db');
 
+const connectDB = require('./config/db');
+const path = require('path');
+const _dirname = path.resolve()
+
+console.log(_dirname)
 // Initialize Express app
 const app = express();
 
@@ -21,22 +24,27 @@ app.use(cors({
   ],
   credentials: true
 }));
+
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// API Routes
-app.use('/api/auth', require('./routes/authRoutes'));
-app.use('/api/employee', require('./routes/employeeRoutes'));
-app.use('/api/admin', require('./routes/adminRoutes'));
 
+
+ app.use('/api/auth', require('./routes/authRoutes'));
+  app.use('/api/employee', require('./routes/employeeRoutes'));
+  app.use('/api/admin', require('./routes/adminRoutes'));
+
+  
+app.use(express.static(path.join(_dirname, '/client/dist')));
+app.get(/(.*)/,(req,res)=> res.sendFile(path.join(_dirname,'client/dist/index.html')))
+
+
+// API Routes
 // ================= PRODUCTION CONFIG =================
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'client/dist')));
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'));
-  });
-}
+
 
 // ================= DEVELOPMENT CONFIG =================
 
