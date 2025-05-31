@@ -4,7 +4,8 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "build": "npm install --prefix client && npm run --prefix client build"
+    "build": "npm install --prefix client --production=false && npm run --prefix client build"
+
     
   },
   "dependencies": {
