@@ -4,8 +4,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "build": "npm install --prefix client --production=false && npm run --prefix client build"
-
+    "build": "npm install --production && npm install --prefix client --production=false && npm run --prefix client build",
+  "install": "npm install --production"
     
   },
   "dependencies": {
