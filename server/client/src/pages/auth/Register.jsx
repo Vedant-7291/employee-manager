@@ -26,7 +26,7 @@ const Register = () => {
     setIsLoading(true);
     
     try {
-      const response = await axios.post('http://employee-manager-11.onrender.com/api/auth/register', formData);
+      const response = await axios.post('https://employee-manager-11.onrender.com/api/auth/register', formData);
       
       if (response.data.user && response.data.token) {
         setUser({
