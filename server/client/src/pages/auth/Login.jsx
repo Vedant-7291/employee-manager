@@ -18,7 +18,7 @@ const Login = () => {
     setIsLoading(true);
     
     try {
-      const res = await axios.post('http://employee-manager-11.onrender.com/api/auth/login', {
+      const res = await axios.post('https://employee-manager-11.onrender.com/api/auth/login', {
         email,
         password,
       });
