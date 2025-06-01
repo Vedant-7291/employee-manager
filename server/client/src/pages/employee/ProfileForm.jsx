@@ -47,7 +47,7 @@ const ProfileForm = ({ onClose, onUpdateUser }) => {
       if (profileImage) data.append("profile", profileImage);
   
       const res = await axios.put(
-        `http://localhost:5000/api/employee/update-profile/${user._id}`,
+        `https://employee-manager-11.onrender.com/api/employee/update-profile/${user._id}`,
         data,
         {
           headers: {
