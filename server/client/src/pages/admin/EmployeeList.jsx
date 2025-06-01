@@ -18,7 +18,7 @@ function EmployeeList({ updatedUser, onProfileUpdate }) {
   const fetchEmployees = async () => {
     setIsLoading(true);
     try {
-      const res = await axios.get(`http://localhost:5000/api/admin/employees?cache=${Date.now()}`, {
+      const res = await axios.get(`https://employee-manager-11.onrender.com/api/admin/employees?cache=${Date.now()}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
         },
