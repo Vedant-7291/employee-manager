@@ -37,7 +37,7 @@ function AdminDashboard() {
   useEffect(() => {
     const fetchCompletedTasks = async () => {
       try {
-        const response = await axios.get('http://employee-manager-11.onrender.com/api/admin/completed-tasks', {
+        const response = await axios.get('https://employee-manager-11.onrender.com/api/admin/completed-tasks', {
           headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` },
         });
         setCompletedTasks(response.data.tasks || []);
