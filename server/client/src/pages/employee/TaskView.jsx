@@ -24,7 +24,7 @@ const TaskView = () => {
     try {
       const token = localStorage.getItem('token');
       await axios.put(
-        `http://localhost:5000/api/employee/tasks/${taskId}/complete`,
+        `https://employee-manager-11.onrender.comapi/employee/tasks/${taskId}/complete`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
