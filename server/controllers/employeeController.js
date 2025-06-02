@@ -19,24 +19,22 @@ const updateEmployeeProfile = async (req, res) => {
     const { name, phone, department } = req.body;
     const profile = req.file ? req.file.path : undefined;
 
-    const employee = await User.findById(req.params.id);
+    const employee = await User.findById(req.params.employeeId); // ✅ Fixed line
     if (!employee) {
       return res.status(404).json({ message: "Employee not found" });
     }
 
-    // Update all fields
     if (name) employee.name = name;
     if (phone) employee.phone = phone;
     if (department) employee.department = department;
     if (profile) employee.profile = profile;
 
     const updatedEmployee = await employee.save();
-    
-    // Return all necessary fields
+
     const userResponse = updatedEmployee.toObject();
     delete userResponse.password;
-    
-    res.status(200).json({ 
+
+    res.status(200).json({
       message: "Profile updated successfully",
       user: {
         _id: userResponse._id,
@@ -50,12 +48,13 @@ const updateEmployeeProfile = async (req, res) => {
     });
   } catch (error) {
     console.error("Profile update error:", error);
-    res.status(500).json({ 
+    res.status(500).json({
       message: "Error updating profile",
-      error: error.message 
+      error: error.message
     });
   }
 };
+
 // Check today's attendance
 const checkTodayAttendance = async (req, res) => {
   try {
