@@ -84,7 +84,7 @@ const getEmployeeProfile = async (req, res) => {
 
 const removeEmployee = async (req, res) => {
   try {
-    const employeeId = req.params.id;
+    const employeeId = req.params.employeeId;
     const user = await User.findByIdAndDelete(employeeId);
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
@@ -95,6 +95,7 @@ const removeEmployee = async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 };
+
 
 
 
