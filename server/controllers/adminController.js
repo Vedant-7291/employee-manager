@@ -56,11 +56,7 @@ const getAllEmployees = async (req, res) => {
   try {
     const employees = await User.find({ role: 'employee' })
       .select('name email profile department role isOnline lastActive'); // Include all needed fields
-     console.log('Sending employees data:', employees.map(e => ({
-      name: e.name,
-      isOnline: e.isOnline,
-      lastActive: e.lastActive
-    })));
+     
     res.status(200).json(employees);
   } catch (err) {
     console.error('Error fetching employees:', err);
