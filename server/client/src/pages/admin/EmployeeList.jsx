@@ -63,7 +63,7 @@ function EmployeeList({ updatedUser, onProfileUpdate }) {
   const handleDelete = async (employeeId) => {
     if (!window.confirm('Are you sure you want to remove this user?')) return;
     try {
-      await axios.delete(`http://localhost:5000/api/admin/employee/${employeeId}`, {
+      await axios.delete(`https://employee-manager-11.onrender.com/api/admin/employee/${employeeId}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
         },
