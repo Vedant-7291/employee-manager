@@ -119,7 +119,7 @@ const getAttendance = async (req, res) => {
     from.setDate(from.getDate() - 30);
 
     const attendance = await Attendance.find({
-      user: req.params.id,
+      user: req.params.employeeId,
       date: { $gte: from }
     }).sort({ date: -1 });
 
